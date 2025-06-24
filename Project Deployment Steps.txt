@@ -1,0 +1,25 @@
+                                                ================================================================================================================================================================
+
+                                                               Project Deploy Process Steps =>
+
+================================================================================================================================================================
+
+   Step 1:- Right click on project
+
+   Step 2:- Click on run as -> maven build...
+
+   Step 3:- Goals -> clean install -> skip test
+
+   Step 4:- Apply and run-> refresh project
+
+   Step 4:- Project -> target folder-> copy war file
+
+   Step 4:- Put war file in D:\softwares\servers\apache-tomcat-9.0.55\webapps
+
+   Step 4:- Start server D:\softwares\servers\apache-tomcat-9.0.55\bin startup.bat file
+
+   Step 4:- Once the server starts go to browser localhost:8080/project_name 
+
+   Step 4:- Close server ctrl+c/shutdown.bat
+
+================================================================================================================================================================

@@ -1,0 +1,242 @@
+
+================================================================================================================================================================
+
+Q:- What is full Form of pom.xml ?
+A:- POM = Project Object Model.
+
+================================================================================================================================================================
+
+Q:- How many dependency in you pom.xml file and there version ?
+A:- 1) junit -> 3.8.1    2) log4j -> 1.2.17
+    3) mysql -> 8.0.29   4) c3p0 -> 0.9.1.2   5) javax.mail -> 1.4.7
+
+================================================================================================================================================================
+
+Q:- What is BaseCtl ?
+A:- It is a parent class to all the ctl classes. It is a servlet. It is a abstract class.
+
+================================================================================================================================================================
+
+Before Login =>
+
+Q1: What is ORSProject-4 ?
+A1: ORS is online web application that manage Student and Marksheet record.
+
+Q2: ORSProject-4 kese banaya ?
+A2: With the help of maven architecture.
+
+Q3: By default index.jsp hi kyon open hota hai ?
+A3: We have mapped index.jsp in web.xml using the welcome tag -> <welcome-file>index.jsp</welcome-file>
+
+Q4: How to include Header.jsp or Footer.jsp ?
+A4: Using the include file  tag <% include file="Header.jsp", <% include file="Footer.jsp".
+
+Q5: What is link ?
+A5: A link is a connection or relationship between two entities.
+
+Q6: What is direct link or indirect lint ?
+A6: A direct link is when you access a JSP page directly through the browser's URL (bypassing any controller or logic in between) example - welcome.jsp. 
+    An indirect link goes through a controller (Servlet) first, which performs logic, then forwards to a JSP example - studentlist.sjp.
+
+Q7: What is URL ?
+A7: A URL (Uniform Resource Locator) is the address used to access a resource on the internet or within a web application.
+
+Q8: What is URI ?
+A8: URI stands for Uniform Resource Identifier. It’s a string that uniquely identifies a resource.
+
+Q9: What is MVC ?
+A9: MVC stands for Model-View-Controller — it’s a design pattern used to separate an application into three interconnected components. This separation helps organize code, making it easier    
+    to manage, maintain, and scale.
+
+Q10: What is MVC guidelines ?
+A10:         Guideline	                                   Purpose
+    Keep Model, View, Controller separate	Clear responsibility boundaries
+    Thin Controllers	                        Simplicity and easier testing
+    Passive Views	                        Cleaner UI, easier changes
+    Use JSTL/EL, no scriptlets	                Maintainable JSP code
+    Proper exception handling	                Better user experience
+
+Q11: What is input validation ?
+A11: Input validation is the process of checking user input to ensure it is correct, safe, and useful before processing it in your application.
+
+Q12: What is business validation ?
+A12: Business validation refers to the process of checking that data or actions meet specific business rules or logic defined by the organization or application domain. It ensures that the
+     input or operations are not just technically correct (e.g., non-null, proper format) but logically valid according to the actual business requirements.   
+
+Q13: Flow of input validation ?
+A13: The user fills out the form fields on userregistration.jsp -> When the user clicks Signup the form is submitted via post -> In post if operation is signup validate method is called 
+     -> if validation fail error message is forwarded, but if validation passes it call populateBean method -> then model's add method is called and user is registered . 
+     
+     [JSP Form] → submit to → [UserRegistrationCtl.doPost()]
+     ├── validate(request) ( if operation is signup )
+     │   └── If fail: return to JSP with errors
+     └── If pass:
+         ├── populateBean(request)
+         ├── model.registerUser(bean)
+         └── If success → success message on JSP
+         └── If duplicate → error message on JSP
+
+Q14: Index.jsp page per link or image kese lai ?
+A14: href tag for link and <img> tag for image.
+
+Q15: Welcome.jsp kese open hua ?
+A15: As we have mapped index.jsp in web.xml file and we have give the path of welcomectl in index.jsp
+
+Q16: hi, guest kiske scop mai hai ?
+A16: In scope of a user visiting the site without login .
+
+Q17: Copyright ka symbol kese aya ?
+A17: using &copy.
+
+Q18: Loginview.jsp kese open hua ?
+A18: When we click on login link it takes use to loginctl doget from where we are forwarded to loginview.jsp
+
+Q19: Login or password ki field kese banai ? 
+A19: Using table tag.
+
+Q20: Flow of Authenticate ?
+A20: When a user sign in from loginview it goes to loginctl dopost where if the operation is sign_in the authenticate method of usermodel is called which check does the id and pwd match
+     that of which are present in database, if it matches the user is logged_in other wise error message is printed.
+
+Q21: hi, firstName or role kese aya ?
+Q21: Once a user login a new session is created. Using the getAttribute method of session the user information is taken. and then using the information user's first name and role are
+     printed.
+
+Q22: Header per sari link kese show hui ?
+A22: When the user login based on his role links are shown in header using href tag.
+
+Q23: Flow of business validation ?
+A23:
+
+Q24: Flow of business validation in loginView.jsp ?
+A24: User submits login form, the request goes to loginctl post method, using getString method of DataUtility parameters  are read and validate method is called for input validation. If
+     validation fails error message are sent on screen but if validation is passes controller proceeds with authentication logic.
+
+Q25: Flow of business validation in userRegistrationView.jsp ?
+A25: User submits the user registration form the request goes to userregistrationctl post method It first checks which operation is selected (OP_SIGN_UP or OP_RESET).
+     If OP_SIGN_UP is selected, it performs input validation using the validate() method. validate() method performs business validation. If validate fails error message is set but if it 
+     passes, the controller populates UserBean from the form. registerUser method of user model which adds the user into the database and a success message is printed.
+
+Q26: Link ko separate kese kiya ?
+A26: Using pipe (|) character which acts as a visual separator in the user interface.
+
+Q27: Field of gender in userRegistrationView.jsp ? 
+A27: The Gender field is implemented using a <select> tag dropdown, and it is dynamically generated using a HashMap and the HTMLUtility.getList() method.
+
+Q28: Inputvalidation in userRegistrationView.jsp. ?
+A28: User submits the form controller receives the request in post method. But before that validation runs in, validate method checks each field using the DataValidator methods. If any 
+     field is invalidate error message is sent and validation fails. But if validation passes registerUser method is called and user is registered. 
+
+Q29: By default role in userRegistrationView.jsp ?  
+A29: By default student role is set using bean.setrole(RoleBean.STUDENT).
+
+Q30: How many scopes in your application ?
+A30:
+
+================================================================================================================================================================
+
+After Login =>
+
+Q1: Flow of userList ? 
+A1: User accesses the User List page. UserListCtl.doGet() calls search method to get list it call it again to get next page with an increment in pageno. It sets list and paginations 
+    details and error message if any and forward it to userlistview.jsp.
+
+Q2: Userlist pe click kiya to 10 records hi kyon aye ?
+A2: Because of pagination, we have set page.size limit to 10.
+
+Q3: How to apply pagination in your application ?
+A3: In your project's system.properties file set page.size to x. Then read the pagination details datautility class methods. Fetch current and next page records using search method set 
+    list and pagination into request and forward it to jsp.
+
+Q4: Search field kese lagai ?
+A4: Add search field in jsp using input tag. Fetch the search input in populateBean method of controller and set that input in bean. Use search method to search the data and then forward
+    the result to jsp.
+
+Q5: Flow of user delete ?
+A5: In jsp create checkbox using input tag. User select the data and click on delete button. This sends the selected IDs (ids[]) and operation (Delete) to the controller. Inside dopost of 
+    the controller operation delete is get and for each ids delete method of model is called and the data is deleted.
+
+Q6: What is where 1=1?
+A6: It is used for sql injection to append sql quary.
+
+Q7: What is preload ?
+A7: preload() is a method in the BaseCtl and its subclasses that is used to load data required before rendering the view.
+
+Q8: Preload kese lagai ?
+A8: Preload is a method of BaseCtl which is override in its subclasses which is used to load data required before rendering the view.
+
+Q9: Merit marksheet list ki query ?
+A9: select * from st_marksheet where physics >= 35, chemistry >= 35, maths >= 35 order by total desc; .
+
+Q10: Edit ki link kese banai ?
+A10: 
+
+Q11: Edit pe click kiya tho data fill hoke kese aya ?
+A11: Edit link is clicked in userlist.jsp. It passes userid in request, user id is received in request from on userList ctl. In userList dopost it is check if the id is > 0 and op !null
+     if both the parameters are fulfilled findbypk of model is called, which fetches and set data in bean in request from and forward it to view using request from comes with your
+     data pre-filled.
+
+Q12: Edit pe click kiya tho model ki konsi method chali ?
+A12: findbypk of Usermodel.
+
+Q13: System.properties ke parameter ?
+A13: 
+
+Q14: Usermodel ki methods ke return type and queries ?
+A14: 1} nextPK() return type = int, query = "SELECT MAX(ID) FROM st_user"
+     2} add() return type = long, query = "INSERT INTO st_user VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+     3} delete() return type = void, query = "DELETE FROM st_user WHERE ID=?"
+     4} findByLogin return type = UserBean, query = "SELECT * FROM st_user WHERE login=?"
+     5} findbypk  return type = UserBean, query = "SELECT * FROM st_user WHERE id=?"
+     6} update return type = void, query = "UPDATE st_user SET FIRST_NAME=?,LAST_NAME=?,LOGIN=?,PASSWORD=?,DOB=?,MOBILE_NO=?,ROLE_ID=?,GENDER=?,LAST_LOGIN=?,CREATED_BY=?,MODIFIED_BY=?,
+                                            CREATED_BY=?,MODIFIED_BY=?,CREATED_DATETIME=?,MODIFIED_DATETIME=?  WHERE ID=?"
+     7} search () return type = list, query = "SELECT * FROM st_user WHERE 1=1" " AND FIRST_NAME like '" + bean.getFirstName() + "%'");
+     8} authenticate() return type = UserBean, query = "SELECT * FROM st_user WHERE LOGIN =? AND PASSWORD =?"
+     9} list() return type = list, query = "select * from st_user"
+
+Q15: How many design pattern use in application ?
+A15: There are 4 design pattern used in the application ->
+     1) Singleton design pattern     2) Factory design pattern 
+     3) Builder design pattern       4) Front controller design pattern
+
+Q16: FrontCtl design pattern ?
+A16: The Front Controller Pattern centralizes request handling by using a single controller (typically a servlet) to handle all incoming client requests. It then delegates these request
+     to the appropriate controller/view.   
+
+Q17: Builder design pattern ?
+A17: The Builder Design Pattern is a creational design pattern used to construct complex objects step by step. It helps create different types or representations of an object using the
+     same construction process.
+
+Q18: SingleTon design pattern ?
+A18: The Singleton Design Pattern is a creational design pattern used when you want to ensure only one instance of a class is created and provide a global point of access to it.
+
+Q19: Factory design pattern ?
+A19: The Factory Pattern defines an interface for creating an object but lets subclasses decide which class to instantiate.
+
+Q20: What is FrontCtl
+A20: The Front Controller is a design pattern in which a single handler (typically a Servlet in Java) is used to handle all incoming requests to a web application and dispatches them to
+     appropriate controllers or views.
+
+Q21: How to apply FrontCtl ?
+A21: Add /ctl in URL pattern of ctl class. 
+
+Q22: Filter ki life cycle method
+A22: Filter is created -> container calls 'init()' -> For every request 'dofilter is called' -> On shutdown 'destroy is called'.
+
+Q23: FrontCtl kaha pe apply kiya ?
+A23: FrontCtl is applied to each controller to handle requests when a user session is active. 
+
+Q24: FrontCtl me konsa design pattern use kiya hai ?
+A24: Front Controller Design Pattern
+
+Q25: What is Javadoc and how to apply ?
+A25: Javadoc is a documentation which help other developer to understand the project.
+
+     * how to apply =>
+     -> Alt + Shift + j
+     -> Project menu Generate Javadoc
+     -> Config me javadoc.exe path
+     -> Select Destination
+     -> Visibility Private (we can access private attribute of class)
+
+================================================================================================================================================================

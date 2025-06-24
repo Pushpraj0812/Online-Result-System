@@ -1,23 +1,8 @@
-
 ================================================================================================================================================================
 
-Q:- What is full Form of pom.xml ?
-A:- POM = Project Object Model.
+                                                                        Before Login =>
 
 ================================================================================================================================================================
-
-Q:- How many dependency in you pom.xml file and there version ?
-A:- 1) junit -> 3.8.1    2) log4j -> 1.2.17
-    3) mysql -> 8.0.29   4) c3p0 -> 0.9.1.2   5) javax.mail -> 1.4.7
-
-================================================================================================================================================================
-
-Q:- What is BaseCtl ?
-A:- It is a parent class to all the ctl classes. It is a servlet. It is a abstract class.
-
-================================================================================================================================================================
-
-Before Login =>
 
 Q1: What is ORSProject-4 ?
 A1: ORS is online web application that manage Student and Marksheet record.
@@ -123,7 +108,7 @@ A26: Using pipe (|) character which acts as a visual separator in the user inter
 Q27: Field of gender in userRegistrationView.jsp ? 
 A27: The Gender field is implemented using a <select> tag dropdown, and it is dynamically generated using a HashMap and the HTMLUtility.getList() method.
 
-Q28: Inputvalidation in userRegistrationView.jsp. ?
+Q28: Inputvalidation in userRegistrationView.jsp ?
 A28: User submits the form controller receives the request in post method. But before that validation runs in, validate method checks each field using the DataValidator methods. If any 
      field is invalidate error message is sent and validation fails. But if validation passes registerUser method is called and user is registered. 
 
@@ -135,7 +120,9 @@ A30:
 
 ================================================================================================================================================================
 
-After Login =>
+                                                                         After Login =>
+
+================================================================================================================================================================
 
 Q1: Flow of userList ? 
 A1: User accesses the User List page. UserListCtl.doGet() calls search method to get list it call it again to get next page with an increment in pageno. It sets list and paginations 
